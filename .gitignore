@@ -1,0 +1,12 @@
+.idea
+pkg
+coverage.out
+.vscode
+c.out
+.env
+pgdata
+db-data
+docker-compose.yml
+static
+bin
+certbot
