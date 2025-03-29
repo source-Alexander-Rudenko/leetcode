@@ -44,6 +44,54 @@ func equalPairs(grid [][]int) int {
 	return count
 }
 
+/* топовое решение
+func equalPairs(grid [][]int) int {
+	rows := make(map[string]int)
+	cols := make(map[string]int)
+	rowBuf := make([]byte, len(grid)*4)
+	colBuf := make([]byte, len(grid)*4)
+	for i := range grid {
+		for j := range grid[i] {
+			binary.BigEndian.PutUint32(rowBuf[j*4:], uint32(grid[i][j]))
+			binary.BigEndian.PutUint32(colBuf[j*4:], uint32(grid[j][i]))
+		}
+		rows[string(rowBuf)]++
+		cols[string(colBuf)]++
+	}
+
+	count := 0
+	for k := range cols {
+		count += rows[k] * cols[k]
+	}
+
+	return count
+}
+
+func equalPairs(grid [][]int) int {
+    rows := map[string]int{}
+    cols := map[string]int{}
+    rowBuf := make([]rune, len(grid))
+    colBuf := make([]rune, len(grid))
+    res := 0
+
+    for i, row := range grid {
+        for j, cell := range row {
+            rowBuf[j] = rune(cell)
+            colBuf[j] = rune(grid[j][i])
+        }
+
+        rows[string(rowBuf)]++
+        cols[string(colBuf)]++
+    }
+
+    for s := range rows {
+        res += rows[s] * cols[s]
+    }
+
+    return res
+}
+*/
+
 func main() {
 	grid1 := [][]int{
 		{3, 2, 1},
