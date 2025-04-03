@@ -16,19 +16,19 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	mp := make(map[rune]struct{})
 	arr := []rune(s)
-	r, result := 0, 1
-	for l, ch := range arr {
+	l, result := 0, 1
+	for r, ch := range arr {
 		if _, ok := mp[ch]; ok {
-			for arr[r] != ch {
+			for arr[l] != ch {
 				delete(mp, arr[r])
-				r++
+				l++
 			}
 			delete(mp, arr[r])
-			r++
+			l++
 		}
 		mp[ch] = struct{}{}
-		if (l-r)+1 > result {
-			result = l - r + 1
+		if (r-l)+1 > result {
+			result = r - l + 1
 		}
 	}
 	return result
