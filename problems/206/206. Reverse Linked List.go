@@ -35,6 +35,7 @@ func reverseList(head *ListNode) *ListNode {
 		head.Next = prev
 		prev = head
 		head = tmp
+		//prev, head, head.Next = head, head.Next, prev
 	}
 	return prev
 }
