@@ -25,22 +25,22 @@ func reorderList(head *ListNode) {
 		slow = slow.Next
 		fast = fast.Next.Next
 	}
-	seccond := slow.Next
+	second := slow.Next
 	slow.Next = nil
 	var prev *ListNode
-	for seccond != nil {
-		tmp := seccond.Next
-		seccond.Next = prev
-		prev = seccond
-		seccond = tmp
+	for second != nil {
+		tmp := second.Next
+		second.Next = prev
+		prev = second
+		second = tmp
 	}
 	first := head
-	seccond = prev
-	for seccond != nil {
-		tmp1, tmp2 := first.Next, seccond.Next
-		first.Next = seccond
-		seccond.Next = tmp1
-		first, seccond = tmp1, tmp2
+	second = prev
+	for second != nil {
+		tmp1, tmp2 := first.Next, second.Next
+		first.Next = second
+		second.Next = tmp1
+		first, second = tmp1, tmp2
 	}
 }
 
